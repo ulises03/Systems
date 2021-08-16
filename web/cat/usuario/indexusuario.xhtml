@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title" >Catálogo de usuarios</ui:define>
+    <ui:define name="content">
+        <p:panel header="Catálogo de ciudades" style="padding: 10px;" footer="">
+            <h:form id="form">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="text-align: right;">
+                        <p:commandButton type="button" value="Añadir" icon="fa fa-plus" onclick="PF('wdialog').show();"></p:commandButton>
+                    </div>
+                </div>
+                <p:dataTable value="#{usuario.lista}" var="usuariofor" 
+                             emptyMessage="No se encotro usuarios"
+                             paginator="true" rows="10"
+                             widgetVar="tablaUsuario" 
+                             filteredValue="#{usuario.filtroUsuario}" 
+                             editable="true" 
+                             id="tablaUsuario"
+                             reflow="true">
+                    <p:ajax event="rowEdit" listener="#{usuario.actualizar}" />
+                    <p:column headerText="Usuario" filterBy="#{usuariofor.usuario}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{usuariofor.usuario}"/>
+                            </f:facet>
+
+                            <f:facet name="input">
+                                <p:inputText value="#{usuario.editUser}" placeholder="#{usuariofor.usuario}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Nombre" filterBy="#{usuariofor.nombre}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{usuariofor.nombre}"/>
+                            </f:facet>
+
+                            <f:facet name="input">
+                                <p:inputText value="#{usuario.editName}"  placeholder="#{usuariofor.nombre}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Correo" filterBy="#{usuariofor.correo}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{usuariofor.correo}"/>
+                            </f:facet>
+
+                            <f:facet name="input">
+                                <p:inputText value="#{usuario.editEmail}" placeholder="#{usuariofor.correo}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Eliminar" style="text-align: center;width: 90px;">
+                        <p:commandButton   icon="fa fa-ban" title="Eliminar" 
+                                           action="#{usuario.deleteUsuario(usuariofor.id)}"
+                                           update="tablaUsuario" process="@this" id="btndelete" />
+                    </p:column>
+                    <p:column headerText="Editar" style="text-align: center;width: 90px;">
+                        <p:rowEditor  editTitle="Editar" />
+                    </p:column>
+                </p:dataTable>
+                <p:dialog id="dialog" widgetVar="wdialog">
+                    <h:panelGrid columns="2" id="panel">
+                        <p:outputLabel value="Nombre"></p:outputLabel>
+                        <p:inputText value="#{usuario.addName}" type="text" placeholder="ej.- Ulises marquez" required="true" id="inputName" requiredMessage="El nombre es requerido"
+                                     maxlength="20"/>
+                        <p:outputLabel value="Usuario"></p:outputLabel>
+                        <p:inputText value="#{usuario.addUser}" type="text" placeholder="ej.- Uli23" required="true" id="inputUser" requiredMessage="El usuario es requerido" 
+                                     maxlength="20"/>
+                        <p:outputLabel value="Email"></p:outputLabel>
+                        <p:inputText value="#{usuario.addEmail}" type="email" placeholder="ej.- ulises@gmail.com"  required="true" id="inputEmail" requiredMessage="El correo es requerido" 
+                                     validatorMessage="Correo invalido">
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                        </p:inputText>
+                        <p:outputLabel value="Contraseña"></p:outputLabel>
+                        <p:inputText value="#{usuario.addPassword}" type="password" placeholder="ej.- *******"  required="true" id="inputPass" requiredMessage="La contraseña es requerida"
+                                     maxlength="20"/>
+
+                        <p:commandButton value="registrar" action="#{usuario.addUsuario}"  update="tablaUsuario,inputName,inputUser,inputEmail,inputPass"/>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

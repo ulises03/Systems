@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>Systems</title>
+        <h:outputScript name="js/layout.js" library="mirage-layout" />
+        <script type="text/javascript">
+            //<![CDATA[
+            function changeMode() {
+                var body = $('.login-body');
+
+                if (body) {
+                    if (body.hasClass('layout-dark')) {
+                        body.removeClass('layout-dark').addClass('layout-light');
+                    } else {
+                        body.removeClass('layout-light').addClass('layout-dark');
+                    }
+                }
+            }
+            //]]>
+        </script>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/logo.ico']}"/>
+    </h:head>
+    <h:body styleClass="login-body layout-dark" id="contenedor">
+
+        <div class="login-content">
+            <div class="night-switch">
+                <h:form>
+                    <p:commandButton styleClass="dark-switch"  icon="fa fa-circle" oncomplete="changeMode()" />
+                    <p:commandButton styleClass="light-switch"  icon="fa fa-circle-thin" oncomplete="changeMode()" />
+                </h:form>
+            </div>
+            <div class="login-panel">
+                <div class="login-panel-content">
+                    <div class="logo">
+                        <p:graphicImage name="img/logo.png"  />
+                    </div>
+                    <h1>Sign in to Systems</h1>
+                    <p>Welcome, please use the form to sign-in Systems network</p>
+                    <h:form styleClass="forms">
+                        <p:growl id="growl" showDetail="true" />
+                        
+                        <div class="login-input-wrapper">
+                            <p:outputLabel for="username" value="Username" />
+                            <p:inputText id="username" value="#{login.username}" required="true" placeholder="Type your username..." maxlength="20" 
+                                         requiredMessage="El usuario es requerido"/>
+                            
+                            <i class="fa fa-user" />
+                        </div>
+
+                        <div class="login-input-wrapper">
+                            <p:outputLabel for="password" value="Password" />
+                            <p:password id="password"  value="#{login.password}" required="true" placeholder="Type your password" feedback="false" maxlength="20"
+                                        requiredMessage="La contraseña es requerida"/>
+                            <i class="fa fa-lock" />
+                        </div>
+
+                        <div class="buttons">
+                            <p:commandButton value="Login" action="#{login.login()}" id="btnLogin" update="growl" />
+                        </div>
+                        <p:blockUI block="contenedor" trigger="btnLogin" />
+                    </h:form>
+                </div>
+            </div>
+
+            <div class="desert"></div>
+        </div>
+
+        <h:outputStylesheet name="/css/layout-blue-dark.css" library="mirage-layout" />
+
+    </h:body>
+
+</html>

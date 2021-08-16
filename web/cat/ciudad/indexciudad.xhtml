@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title" >Catálogo de ciudades</ui:define>
+    <ui:define name="content">
+        <p:panel header="Catálogo de ciudades" style="padding: 10px;" footer="">
+            <h:form id="form">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="text-align: right;">
+                        <p:commandButton type="button" value="Añadir" icon="fa fa-plus" onclick="PF('wdialog').show();"></p:commandButton>
+                    </div>
+                </div>
+                <p:dataTable value="#{ciudad.lista}" var="ciudadfor" 
+                             emptyMessage="No se encotro ciudades"
+                             paginator="true" rows="10"
+                             widgetVar="tablaCiudad" 
+                             filteredValue="#{ciudad.filtroCiudad}" 
+                             editable="true" 
+                             id="tablaCiudad"
+                             reflow="true">
+                    <p:ajax event="rowEdit" listener="#{ciudad.actualizar}" />
+                    <p:column headerText="Descripción" filterBy="#{ciudadfor.descripcion}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{ciudadfor.descripcion}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{ciudad.editDesc}" placeholder="#{ciudadfor.descripcion}"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Lada" filterBy="#{ciudadfor.lada}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{ciudadfor.lada}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputNumber value="#{ciudad.editLada}" decimalPlaces="0" maxValue="999"  />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Código" filterBy="#{ciudadfor.codigo}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{ciudadfor.codigo}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{ciudad.editCodigo}" placeholder="#{ciudadfor.codigo}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Eliminar" style="text-align: center;width: 90px;">
+
+                        <p:commandButton   icon="fa fa-ban" title="Eliminar" 
+                                           action="#{ciudad.deleteCiudad(ciudadfor.id)}"
+                                           update="tablaCiudad" process="@this" id="btndelete" />
+                    </p:column>
+                    <p:column headerText="Editar" style="text-align: center;width: 90px;">
+                        <p:rowEditor  editTitle="Editar" />
+                    </p:column>
+                </p:dataTable>
+                <p:dialog id="dialog" widgetVar="wdialog">
+                    <h:panelGrid columns="2" id="panel">
+                        <p:outputLabel value="Descripcion"></p:outputLabel>
+                        <p:inputText value="#{ciudad.addDesc}" type="text" placeholder="ej.- 35 GUADALUPE Y CALVO, CHIH" required="true" id="inputDesc" maxlength="20"
+                                     requiredMessage="La Descripcion es requerida"/>
+                        <p:outputLabel value="Lada"></p:outputLabel>
+                        <p:inputNumber value="#{ciudad.addLada}" decimalPlaces="0" inputStyle="number" 
+                                       placeholder="ej.- 649" required="true"  id="inputLada" maxValue="999" minValue="1" 
+                                       requiredMessage="Lada es requerida"/>
+
+                        <p:outputLabel value="Codigo"></p:outputLabel>
+                        <p:inputText value="#{ciudad.addCodigo}"  placeholder="ej.- a35" required="true" id="inputCode" maxlength="4"
+                                     requiredMessage="Codigo es requerido"/>
+                        <p:commandButton value="registrar" action="#{ciudad.addCidad}" update="tablaCiudad,inputDesc,inputLada,inputCode" resetValues="true"/>
+                    </h:panelGrid>
+                </p:dialog>
+                <p:blockUI block="tablaCiudad" trigger="tablaCiudad:btndelete" />
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

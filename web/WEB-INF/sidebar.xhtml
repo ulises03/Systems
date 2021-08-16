@@ -1,0 +1,38 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pm="http://primefaces.org/mirage">
+
+    <div class="layout-sidebar">
+        <div class="sidebar-logo">
+            <a href="#" class="sidebar-pin" title="Toggle Menu">
+                <i class="fa fa-thumb-tack"></i>
+            </a>
+            <a href="dashboard.xhtml">
+                <p:graphicImage name="img/logo.png" id="imgLogo"/>
+                <span class="app-name">SYSTEMS</span>
+            </a>
+        </div>
+
+        <div class="layout-menu-container">
+            <div class="nano">
+                <div class="nano-content menu-scroll-content">
+                    <h:form id="menuform">
+                        <pm:menu>
+                            <p:menuitem id="om_dashboard" value="Inicio" url="#{app.baseLogin}index.xhtml" icon="fa fa-fw fa-home"  />
+                            
+                            <p:submenu id="om_components" label="Catálogos " icon="fa fa-fw fa-bars">
+                                <p:menuitem id="om_sample" value="Ciudad"  url="#{app.baseLogin}cat/ciudad/indexciudad.xhtml" icon="fa fa-fw fa-building"  />
+                                <p:menuitem id="om_forms" value="Usuario" url="#{app.baseLogin}cat/usuario/indexusuario.xhtml" icon="fa fa-fw fa-user"  />
+                            </p:submenu>
+                        </pm:menu>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ui:composition>

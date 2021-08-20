@@ -5,19 +5,23 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
 
+
     <ui:define name="title" >Inicio</ui:define>
     <ui:define name="viewname">
         <li>Pages</li> 
         <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
     </ui:define>
-
+    
     <ui:define name="content">
-        <div class="ui-g">
-            <div class="ui-g-12">
-                <div class="card">
-                    <p:galleria value="#{index.images}" var="image" panelWidth="500" panelHeight="313" showCaption="true">
-                        <p:graphicImage name="img/#{image}" alt="Image Description for #{image}"
-                                        title="#{image}" />
+        <div class="p-grid layout-dashboard">
+            <div class="p-col-12">
+                <div class="card timeline" style="text-align: center">
+                    <p:galleria value="#{indexBean.images}" var="image"  showCaption="true" panelWidth="700" panelHeight="400">
+                        <p:graphicImage name="images/index/#{image}" alt="Image Description for #{image}"
+                                        title="#{image}" library="mirage-layout"  width="100%" height="100%" />
                     </p:galleria>
                 </div>
             </div>

@@ -21,7 +21,7 @@ import respuesta.RespuestaCiudad;
  * @author admin
  */
 
-@ManagedBean(name="ciudad")
+@ManagedBean(name="ciudadBean")
 public class CiudadBean {
     private static List<Ciudad> lista;
     private static List<Ciudad> filtroCiudad;

@@ -13,7 +13,7 @@ import util.MyUtil;
  *
  * @author admin
  */
-@ManagedBean(name="app")
+@ManagedBean(name="appBean")
 @ApplicationScoped
 public class AppBean {
 

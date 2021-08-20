@@ -1,6 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:p="http://primefaces.org/ui" xmlns:pa="http://primefaces.org/mirage">
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:pa="http://primefaces.org/mirage">
 
     <div class="layout-topbar">
         <div class="layout-topbar-wrapper">
@@ -8,15 +8,28 @@
             </div>
             <div class="layout-topbar-right">
                 <ul class="layout-topbar-actions">
-                    
+                    <li class="topbar-item">
+                        <a href="#">
+                            <i class="topbar-icon fa fa-calendar"></i>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h1>Calendar</h1>
+                            </li>
+                            <li class="calendar">
+                                <h:form>
+                                    <p:calendar mode="inline" />
+                                </h:form>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="topbar-item profile-item">
                         <a href="#">
                             <span class="profile-image-wrapper">
-                                
+                                <p:graphicImage name="images/index/avatar.png" library="mirage-layout" />
                             </span>
                             <span class="profile-info-wrapper">
-                                <h3>#{layout.getNameUser()}</h3>
-                                <span>Design</span>
+                                <h3>#{layoutBean.getNameUser()}</h3>
                             </span>
                         </a>
                         <ul class="profile-item-submenu">
@@ -26,18 +39,18 @@
                                     <p:graphicImage name="images/topbar/asset-bars.svg" library="mirage-layout" />
                                 </div>
                                 <div class="profile">
-                                    <h1>#{layout.getNameUser()}</h1>
+                                    <h1>#{layoutBean.getNameUser()}</h1>
                                 </div>
                             </li>
                             <li class="layout-submenu-footer">
                                 <h:form>
-                                    <p:commandButton class="signout-button" value="Sign Out" action="#{login.logOut()}" />
+                                    <p:commandButton class="signout-button" value="Sign Out" action="#{loginBean.logOut}" />
                                 </h:form>
-                                
+
                             </li>
                         </ul>
                     </li>
-                    
+
                 </ul>
 
                 <ul class="profile-mobile-wrapper">
@@ -47,7 +60,7 @@
                                 <p:graphicImage name="images/topbar/avatar-eklund.png" library="mirage-layout" />
                             </span>
                             <span class="profile-info-wrapper">
-                                <h3>#{layout.getNameUser()}</h3>
+                                <h3>#{layoutBean.getNameUser()}</h3>
                                 <span>Design</span>
                             </span>
                         </a>
@@ -59,8 +72,8 @@
                                 </div>
                                 <div class="profile">
                                     <p:graphicImage name="images/topbar/avatar-eklund.png" library="mirage-layout"
-                                        width="45" />
-                                    <h1>#{layout.getNameUser()}</h1>
+                                                    width="45" />
+                                    <h1>#{layoutBean.getNameUser()}</h1>
                                     <span>Design</span>
                                 </div>
                             </li>

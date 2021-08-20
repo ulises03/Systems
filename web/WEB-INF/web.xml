@@ -29,7 +29,7 @@
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>mirage-green-light</param-value>
+        <param-value>mirage-brown-light</param-value>
     </context-param>
     
 </web-app>

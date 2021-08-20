@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f95d1e24-efdd-4fcd-9e4f-7ec4a266d924" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AppBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AppBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/CiudadBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/CiudadBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$ComponentTheme.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$ComponentTheme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$MenuTheme.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$MenuTheme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/IndexBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/IndexBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LayoutBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LayoutBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LoginBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LoginBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/UsuarioBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/UsuarioBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/data/PoolDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/data/PoolDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/CiudadModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/CiudadModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/LoginModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/LoginModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/UsuarioModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/UsuarioModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/objclass/Ciudad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/objclass/Ciudad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/objclass/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/objclass/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/Respuesta.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/Respuesta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaCiudad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaCiudad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaUsuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/seguridad/HexDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/seguridad/HexDigest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/sessions/Sesion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/sessions/Sesion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/MyUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/MyUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/template.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/cat/usuario/indexusuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/cat/usuario/indexusuario.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/Proyecto.war" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Proyecto.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/template.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/cat/usuario/indexusuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/web/cat/usuario/indexusuario.xhtml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1wztXncnHlUezqYnfBuC3jg1rIk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f95d1e24-efdd-4fcd-9e4f-7ec4a266d924" name="Changes" comment="" />
+      <created>1629473294566</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1629473294566</updated>
+    </task>
+    <servers />
+  </component>
+</project>

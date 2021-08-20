@@ -11,59 +11,39 @@
         </f:facet>
         <title>Systems</title>
         <h:outputScript name="js/layout.js" library="mirage-layout" />
-        <script type="text/javascript">
-            //<![CDATA[
-            function changeMode() {
-                var body = $('.login-body');
-
-                if (body) {
-                    if (body.hasClass('layout-dark')) {
-                        body.removeClass('layout-dark').addClass('layout-light');
-                    } else {
-                        body.removeClass('layout-light').addClass('layout-dark');
-                    }
-                }
-            }
-            //]]>
-        </script>
         <link rel="shortcut icon" type="image/x-icon" href="#{resource['img/logo.ico']}"/>
+        <f:event listener="#{loginBean.logInValidate()}" type="preRenderView"/>
     </h:head>
-    <h:body styleClass="login-body layout-dark" id="contenedor">
+    <h:body styleClass="login-body layout-light" id="contenedor">
 
         <div class="login-content">
-            <div class="night-switch">
-                <h:form>
-                    <p:commandButton styleClass="dark-switch"  icon="fa fa-circle" oncomplete="changeMode()" />
-                    <p:commandButton styleClass="light-switch"  icon="fa fa-circle-thin" oncomplete="changeMode()" />
-                </h:form>
-            </div>
+
             <div class="login-panel">
                 <div class="login-panel-content">
                     <div class="logo">
-                        <p:graphicImage name="img/logo.png"  />
+                        <p:graphicImage name="img/logo.png" style="width: 200px;" />
                     </div>
-                    <h1>Sign in to Systems</h1>
-                    <p>Welcome, please use the form to sign-in Systems network</p>
+                    <h1>Inicia sesión en systems</h1>
                     <h:form styleClass="forms">
                         <p:growl id="growl" showDetail="true" />
-                        
+
                         <div class="login-input-wrapper">
-                            <p:outputLabel for="username" value="Username" />
-                            <p:inputText id="username" value="#{login.username}" required="true" placeholder="Type your username..." maxlength="20" 
+                            <p:outputLabel for="username" value="Usuario" />
+                            <p:inputText id="username" value="#{loginBean.username}" required="true" placeholder="Escribe tu usuario..." maxlength="20" 
                                          requiredMessage="El usuario es requerido"/>
-                            
+
                             <i class="fa fa-user" />
                         </div>
 
                         <div class="login-input-wrapper">
-                            <p:outputLabel for="password" value="Password" />
-                            <p:password id="password"  value="#{login.password}" required="true" placeholder="Type your password" feedback="false" maxlength="20"
+                            <p:outputLabel for="password" value="Contraseña" />
+                            <p:password id="password"  value="#{loginBean.password}" required="true" placeholder="Escribe tu contraseña" feedback="false" maxlength="20"
                                         requiredMessage="La contraseña es requerida"/>
                             <i class="fa fa-lock" />
                         </div>
 
                         <div class="buttons">
-                            <p:commandButton value="Login" action="#{login.login()}" id="btnLogin" update="growl" />
+                            <p:commandButton value="Entrar" action="#{loginBean.logIn()}" id="btnLogin" update="growl" />
                         </div>
                         <p:blockUI block="contenedor" trigger="btnLogin" />
                     </h:form>

@@ -18,24 +18,26 @@ import sessions.Sesion;
  *
  * @author admin
  */
-@ManagedBean(name = "index")
+@ManagedBean(name = "indexBean")
 public class IndexBean {
+
     private List<String> images;
+    private String nombre;
 
     /*
     Llena la lista para mostrar en la galeria 
-    */
+     */
     @PostConstruct
     public void init() {
         FacesMessage message = null;
-        images = new ArrayList<String>();
+        Usuario user = Sesion.getUserSession();
         
-        for (int i = 1; i <= 5; i++) {
-            images.add("nature" + i + ".jpg");
+        images = new ArrayList<String>();
+
+        for (int i = 1; i <= 3; i++) {
+            images.add("imgIndex" + i + ".jpg");
         }
-        Sesion session = new Sesion();
-        message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido",session.getUserSession().getNombre());
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        nombre = user.getNombre();
     }
 
     public List<String> getImages() {
@@ -45,5 +47,13 @@ public class IndexBean {
     public void setImages(List<String> images) {
         this.images = images;
     }
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }

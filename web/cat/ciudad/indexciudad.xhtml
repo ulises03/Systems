@@ -4,31 +4,63 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 template="/WEB-INF/template.xhtml">
+
     <ui:define name="title" >Catálogo de ciudades</ui:define>
+
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/cat/ciudad/indexciudad">Catálogo de ciudades</p:link>
+        </li>
+    </ui:define>
+
     <ui:define name="content">
-        <p:panel header="Catálogo de ciudades" style="padding: 10px;" footer="">
+        <p:panel header="Catálogo de ciudades" footer="Systems">
             <h:form id="form">
                 <div class="ui-g">
                     <div class="ui-g-12" style="text-align: right;">
                         <p:commandButton type="button" value="Añadir" icon="fa fa-plus" onclick="PF('wdialog').show();"></p:commandButton>
                     </div>
                 </div>
-                <p:dataTable value="#{ciudad.lista}" var="ciudadfor" 
+
+                <p:dialog id="dialog" widgetVar="wdialog" modal="true" responsive="true" showEffect="fade" hideEffect="fade" header="Añadir Ciudad">
+                    <h:panelGrid columns="1" id="panel">
+                        <p:outputLabel value="Descripcion"></p:outputLabel>
+                        <p:inputText value="#{ciudadBean.addDesc}" type="text" placeholder="ej.- 35 GUADALUPE Y CALVO, CHIH" required="true" id="inputDesc" maxlength="20"
+                                     requiredMessage="La Descripcion es requerida"/>
+                        <p:outputLabel value="Lada"></p:outputLabel>
+                        <p:inputNumber value="#{ciudadBean.addLada}" decimalPlaces="0" inputStyle="number" 
+                                       placeholder="ej.- 649" required="true"  id="inputLada" maxValue="999" minValue="0" 
+                                       requiredMessage="Lada es requerida"/>
+
+                        <p:outputLabel value="Codigo"></p:outputLabel>
+                        <p:inputText value="#{ciudadBean.addCodigo}"  placeholder="ej.- a35" required="true" id="inputCode" maxlength="4"
+                                     requiredMessage="Codigo es requerido"/>
+                        <p:commandButton value="Registrar" action="#{ciudadBean.addCidad}" update="tablaCiudad,inputDesc,inputLada,inputCode" resetValues="true" onclick="PF('wdialog').hide(); "/>
+                    </h:panelGrid>
+                </p:dialog>
+
+                <p:dataTable value="#{ciudadBean.lista}" var="ciudadfor" 
                              emptyMessage="No se encotro ciudades"
-                             paginator="true" rows="10"
+                             paginator="true" rows="9"
                              widgetVar="tablaCiudad" 
-                             filteredValue="#{ciudad.filtroCiudad}" 
+                             filteredValue="#{ciudadBean.filtroCiudad}" 
                              editable="true" 
                              id="tablaCiudad"
                              reflow="true">
-                    <p:ajax event="rowEdit" listener="#{ciudad.actualizar}" />
+                    <p:ajax event="rowEdit" listener="#{ciudadBean.actualizar}" />
                     <p:column headerText="Descripción" filterBy="#{ciudadfor.descripcion}" filterMatchMode="contains">
                         <p:cellEditor>
                             <f:facet name="output">
                                 <p:outputLabel value="#{ciudadfor.descripcion}"/>
                             </f:facet>
                             <f:facet name="input">
-                                <p:inputText value="#{ciudad.editDesc}" placeholder="#{ciudadfor.descripcion}"/>
+                                <p:inputText value="#{ciudadBean.editDesc}" placeholder="#{ciudadfor.descripcion}" maxlength="20"/>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
@@ -38,7 +70,7 @@
                                 <p:outputLabel value="#{ciudadfor.lada}"/>
                             </f:facet>
                             <f:facet name="input">
-                                <p:inputNumber value="#{ciudad.editLada}" decimalPlaces="0" maxValue="999"  />
+                                <p:inputNumber value="#{ciudadBean.editLada}" decimalPlaces="0" maxValue="999" placeholder="#{ciudadfor.lada}" />
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
@@ -48,37 +80,27 @@
                                 <p:outputLabel value="#{ciudadfor.codigo}"/>
                             </f:facet>
                             <f:facet name="input">
-                                <p:inputText value="#{ciudad.editCodigo}" placeholder="#{ciudadfor.codigo}" />
+                                <p:inputText value="#{ciudadBean.editCodigo}" placeholder="#{ciudadfor.codigo}"  maxlength="20"/>
                             </f:facet>
                         </p:cellEditor>
                     </p:column>
                     <p:column headerText="Eliminar" style="text-align: center;width: 90px;">
 
                         <p:commandButton   icon="fa fa-ban" title="Eliminar" 
-                                           action="#{ciudad.deleteCiudad(ciudadfor.id)}"
-                                           update="tablaCiudad" process="@this" id="btndelete" />
+                                           action="#{ciudadBean.deleteCiudad(ciudadfor.id)}"
+                                           update="tablaCiudad" process="@this" id="btndelete">
+                            <p:confirm header="Confirmacion" message="Estas seguro de querer eliminar esta ciudad?" icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
                     </p:column>
                     <p:column headerText="Editar" style="text-align: center;width: 90px;">
                         <p:rowEditor  editTitle="Editar" />
                     </p:column>
                 </p:dataTable>
-                <p:dialog id="dialog" widgetVar="wdialog">
-                    <h:panelGrid columns="2" id="panel">
-                        <p:outputLabel value="Descripcion"></p:outputLabel>
-                        <p:inputText value="#{ciudad.addDesc}" type="text" placeholder="ej.- 35 GUADALUPE Y CALVO, CHIH" required="true" id="inputDesc" maxlength="20"
-                                     requiredMessage="La Descripcion es requerida"/>
-                        <p:outputLabel value="Lada"></p:outputLabel>
-                        <p:inputNumber value="#{ciudad.addLada}" decimalPlaces="0" inputStyle="number" 
-                                       placeholder="ej.- 649" required="true"  id="inputLada" maxValue="999" minValue="1" 
-                                       requiredMessage="Lada es requerida"/>
 
-                        <p:outputLabel value="Codigo"></p:outputLabel>
-                        <p:inputText value="#{ciudad.addCodigo}"  placeholder="ej.- a35" required="true" id="inputCode" maxlength="4"
-                                     requiredMessage="Codigo es requerido"/>
-                        <p:commandButton value="registrar" action="#{ciudad.addCidad}" update="tablaCiudad,inputDesc,inputLada,inputCode" resetValues="true"/>
-                    </h:panelGrid>
-                </p:dialog>
-                <p:blockUI block="tablaCiudad" trigger="tablaCiudad:btndelete" />
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-close" />
+                </p:confirmDialog> 
             </h:form>
         </p:panel>
     </ui:define>

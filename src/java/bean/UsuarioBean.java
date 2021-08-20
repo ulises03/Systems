@@ -23,8 +23,7 @@ import util.MyUtil;
  *
  * @author admin
  */
-@ManagedBean(name = "usuario")
-@RequestScoped
+@ManagedBean(name = "usuarioBean")
 public class UsuarioBean {
 
     private static List<Usuario> lista;

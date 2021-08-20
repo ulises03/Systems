@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model;
+
 import data.PoolDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,19 +28,19 @@ public class LoginModel {
 
     public LoginModel() {
     }
-    
+
     /*
     Te devuelve una respuestaLogin con el estatus de la respuesta y el usuario logueado 
-    */
-    public RespuestaLogin requestLogin(String user, String password){
-        
+     */
+    public RespuestaLogin requestLogin(String user, String password) {
+
         PoolDB pool = new PoolDB();
         Respuesta objRespuesta = new Respuesta();
         RespuestaLogin respuesta = new RespuestaLogin();
-        Connection connection = null; 
+        Connection connection = null;
         String query = "";
         String passHex = HexDigest.hexDigest(password);
-         Usuario objuser = null;
+        Usuario objuser = null;
         try {
             connection = pool.getConnection("activa");
             query = "SELECT ID_USUARIO, USUARIO, NOMBRE_USUARIO, CORREO, ACTIVO FROM S_USUARIOS with(nolock) WHERE PASSWORD = ? AND USUARIO = ?";
@@ -47,12 +48,12 @@ public class LoginModel {
             consulta.setString(1, passHex);
             consulta.setString(2, user);
             ResultSet rs = consulta.executeQuery();
-            
+
             while (rs.next()) {
-                
+
                 objRespuesta.setId(0);
                 objRespuesta.setMensaje("Usuario encontrado");
-                
+
                 objuser = new Usuario();
                 objuser.setId(rs.getInt("ID_USUARIO"));
                 objuser.setUsuario(rs.getString("USUARIO"));
@@ -60,24 +61,23 @@ public class LoginModel {
                 objuser.setCorreo(rs.getString("CORREO"));
                 objuser.setActivo(rs.getBoolean("ACTIVO"));
             }
-            if(objuser == null){
+            if (objuser == null) {
                 objRespuesta.setId(1);
-                objRespuesta.setMensaje("No se encontro al usuario");
+                objRespuesta.setMensaje("Nombre de usuario o contraseña incorrecto");
             }
-            
+
             rs.close();
             consulta.close();
             connection.close();
-            
+
         } catch (SQLException | NamingException e) {
             objRespuesta.setId(-1);
             objRespuesta.setMensaje("Error al conectar");
             Logger.getLogger(LoginModel.class.getName()).log(Level.SEVERE, null, e);
         }
-        
         respuesta.setUsuario(objuser);
         respuesta.setRespuesta(objRespuesta);
         return respuesta;
     }
-    
+
 }

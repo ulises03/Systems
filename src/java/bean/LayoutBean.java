@@ -16,7 +16,7 @@ import util.MyUtil;
  *
  * @author admin
  */
-@ManagedBean(name="layout")
+@ManagedBean(name="layoutBean")
 public class LayoutBean {
     private Usuario usuario;
     

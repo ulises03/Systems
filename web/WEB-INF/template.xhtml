@@ -5,7 +5,6 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       lang="en">
-
     <h:head>
         <f:facet name="first">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,48 +25,40 @@
             <f:event listener="#{sesion.isLoggedIn()}" type="preRenderView"></f:event>
         </f:metadata>
     </h:head>
-
     <h:body>
         <div class="layout-wrapper #{guestPreferences.layoutConfig}">
             <ui:include src="./sidebar.xhtml" />
             <div class="layout-main">
                 <ui:include src="./topbar.xhtml" />
-
+                <ui:include src="./breadcrumb.xhtml" />
                 <div class="layout-content">
                     <ui:insert name="content"/>
                 </div>
-
                 <div class="layout-main-mask"></div>
+                <ui:include src="./footer.xhtml" />
             </div>
         </div>
-
         <h:form>
             <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
-
             <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
                 <div class="p-text-center">
-                    <p:graphicImage value="#{app.baseUrl}/resources/img/ajax-loader.gif"/> 
+                    <p:graphicImage value="#{appBean.baseUrl}/resources/img/ajax-loader.gif"/> 
                 </div>
             </p:dialog>
-
-            <p:idleMonitor  timeout="#{session.maxInactiveInterval * 2}" onidle="PF('sessionTimeOutDialog').show();" />
-
+            <p:idleMonitor  timeout="#{session.maxInactiveInterval * 60}" onidle="PF('sessionTimeOutDialog').show();" />
             <p:dialog header="Aviso" widgetVar="sessionTimeOutDialog" modal="true" appendTo="@(body)" 
                       closable="false" width="210" height="110" resizable="false" visible="false">
                 <h:outputText value="Su sesión ha Expirado" /> 
-                <p:commandButton style="text-align: center" id="confirmBackToLogin" value="Volver al inicio" actionListener="#{login.logOut()}"
+                <p:commandButton style="text-align: center" id="confirmBackToLogin" value="Volver al inicio" actionListener="#{loginBean.logOut}"
                                  oncomplete="window.location = '#{facesContext.externalContext.requestContextPath}/';"/>
             </p:dialog>
-
             <p:growl id="growl" showDetail="true" >  
                 <p:autoUpdate />
             </p:growl>
         </h:form>
-
-
         <h:outputStylesheet name="css/nanoscroller.css" library="mirage-layout" />
         <h:outputStylesheet name="css/primeflex.css" library="mirage-layout" />
-        <h:outputStylesheet name="css/layout-green-light.css" library="mirage-layout" />
+        <h:outputStylesheet name="css/layout-brown-light.css" library="mirage-layout" />
     </h:body>
 
 </html>

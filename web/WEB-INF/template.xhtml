@@ -45,13 +45,7 @@
                     <p:graphicImage value="#{appBean.baseUrl}/resources/img/ajax-loader.gif"/> 
                 </div>
             </p:dialog>
-<<<<<<< HEAD
             <p:idleMonitor  timeout="#{session.maxInactiveInterval * 60}" onidle="PF('sessionTimeOutDialog').show();" />
-=======
-
-            <p:idleMonitor  timeout="#{session.maxInactiveInterval * 10}" onidle="PF('sessionTimeOutDialog').show();" />
-
->>>>>>> 9192552012ef62b689a4d1a32a817bd336f8ba6c
             <p:dialog header="Aviso" widgetVar="sessionTimeOutDialog" modal="true" appendTo="@(body)" 
                       closable="false" width="210" height="110" resizable="false" visible="false">
                 <h:outputText value="Su sesión ha Expirado" /> 

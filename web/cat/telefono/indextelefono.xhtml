@@ -1,0 +1,108 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title" >Catálogo de telefonos</ui:define>
+
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/cat/telefono/indextelefono">Catálogo de telefonos</p:link>
+        </li>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:panel header="Catálogo de telefonos" footer="Systems">
+            <h:form id="form">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="text-align: right;">
+                        <p:commandButton type="button" value="Añadir" icon="fa fa-plus" onclick="PF('wdialog').show();"></p:commandButton>
+                    </div>
+                </div>
+
+                <p:dialog id="dialog" widgetVar="wdialog" modal="true" responsive="true" showEffect="fade" hideEffect="fade" header="Añadir Telefono">
+                    <h:panelGrid columns="1" id="panel">
+                        
+                        <p:outputLabel value="Descripcion"></p:outputLabel>
+                        <p:inputText value="#{telefoniaBean.telefonoObj.descripcion}" type="text" required="true" maxlength="20"
+                                     requiredMessage="La Descripcion es requerida"/>
+                        
+                        <p:outputLabel value="Clave"></p:outputLabel>
+                        <p:inputText value="#{telefoniaBean.telefonoObj.clave}" type="text" required="true"  maxlength="20"
+                                     requiredMessage="La Clave es requerida"/>
+                        
+                        <p:commandButton value="Registrar" action="#{telefoniaBean.addTelefono()}" update="tableTelefonia" resetValues="true" onclick="PF('wdialog').hide();"/>
+                    </h:panelGrid>
+                </p:dialog>
+
+
+                <p:dataTable value="#{telefoniaBean.dataTable}" var="telefoniaFor" 
+                             emptyMessage="No se encotro telefonos"
+                             paginator="true" rows="9"
+                             widgetVar="tableTelefonia" 
+                             filteredValue="#{telefoniaBean.filtroTable}" 
+                             editable="true" 
+                             id="tableTelefonia"
+                             reflow="true">
+                    <p:ajax event="rowEdit" listener="#{telefoniaBean.updateTelefono}" />
+                    
+                    <p:column headerText="Descripción" filterBy="#{telefoniaFor.descripcion}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{telefoniaFor.descripcion}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{telefoniaFor.descripcion}" placeholder="#{telefoniaFor.descripcion}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Clave" filterBy="#{telefoniaFor.clave}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{telefoniaFor.clave}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{telefoniaFor.clave}" placeholder="#{telefoniaFor.clave}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    
+                    <p:column headerText="Activo" style="text-align: center;">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="Activo" rendered="#{telefoniaFor.activo}"/>
+                                <p:outputLabel value="Desactivado" rendered="#{not telefoniaFor.activo}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <h:selectBooleanCheckbox value="#{telefoniaFor.activo}" />
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    
+                    <p:column headerText="Eliminar" style="text-align: center;width: 90px;">
+                        <p:commandButton   icon="fa fa-ban" title="Eliminar" 
+                                           action="#{telefoniaBean.deleteTelefono(telefoniaFor.idTelefonia)}"
+                                           update="tableTelefonia" process="@this" id="btndelete">
+                            <p:confirm header="Confirmacion" message="Estas seguro de querer eliminar este telefono?" icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column headerText="Editar" style="text-align: center;width: 90px;">
+                        <p:rowEditor  editTitle="Editar" />
+                    </p:column>
+                </p:dataTable>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-close" />
+                </p:confirmDialog> 
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

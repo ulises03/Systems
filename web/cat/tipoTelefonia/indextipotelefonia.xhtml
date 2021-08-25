@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title" >Catálogo de tipo telefonia</ui:define>
+
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/cat/tipoTelefonia/indextipotelefonia">Catálogo de tipo telefonia</p:link>
+        </li>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:panel header="Catálogo de tipo de telefonia" footer="Systems">
+            <h:form id="form">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="text-align: right;">
+                        <p:commandButton type="button" value="Añadir" icon="fa fa-plus" onclick="PF('wdialog').show();"></p:commandButton>
+                    </div>
+                </div>
+
+                <p:dialog id="dialog" widgetVar="wdialog" modal="true" responsive="true" showEffect="fade" hideEffect="fade" header="Añadir Tipo Telefonia">
+                    <h:panelGrid columns="1" id="panel">
+
+                        <p:outputLabel value="Descripcion"></p:outputLabel>
+                        <p:inputText value="#{tipoTelefoniaBean.tipoTelefonoObj.descripcion}" type="text" required="true" maxlength="20"
+                                     requiredMessage="La Descripcion es requerida" id="inputDesc"/>
+                        <p:outputLabel value="Clave"></p:outputLabel>
+                        <p:inputText value="#{tipoTelefoniaBean.tipoTelefonoObj.clave}" type="text" required="true" maxlength="10"
+                                     requiredMessage="La Clave es requerida" id="inputClave"/>
+
+                        <p:outputLabel value="Telefonia"></p:outputLabel>
+                        <p:selectOneMenu id="option" value="#{tipoTelefoniaBean.id_telefonia}" >
+                            <f:selectItems value="#{tipoTelefoniaBean.comboBox}" var="idTelefonia"
+                                           itemLabel="#{idTelefonia.clave}" itemValue="#{idTelefonia.idTelefonia}"/>
+                        </p:selectOneMenu>
+
+                        <p:commandButton value="Registrar" action="#{tipoTelefoniaBean.addTipoTelefonia()}" update="tableTelefonia,inputClave,inputDesc" 
+                                         resetValues="true" onclick="PF('wdialog').hide();"/>
+                        
+                    </h:panelGrid>
+                </p:dialog>
+
+                <p:dataTable value="#{tipoTelefoniaBean.dataTable}" var="telefoniaFor" 
+                             emptyMessage="No se encotron tipos"
+                             paginator="true" rows="9"
+                             widgetVar="tableTelefonia" 
+                             filteredValue="#{tipoTelefoniaBean.filtroTable}" 
+                             editable="true" 
+                             id="tableTelefonia"
+                             reflow="true">
+                    <p:ajax event="rowEdit" listener="#{tipoTelefoniaBean.updateTelefono}" />
+                    <p:column headerText="Descripción" filterBy="#{telefoniaFor.descripcion}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{telefoniaFor.descripcion}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{telefoniaFor.descripcion}" placeholder="#{telefoniaFor.descripcion}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Clave" filterBy="#{telefoniaFor.clave}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{telefoniaFor.clave}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{telefoniaFor.clave}" placeholder="#{telefoniaFor.clave}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column headerText="Telefonia">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{telefoniaFor.idTelefonia.clave}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:selectOneMenu id="option" value="#{tipoTelefoniaBean.id_telefonia}">
+                                    <f:selectItem itemLabel="Selecciona una telefonia" itemValue="0"/>
+                                    <f:selectItems value="#{tipoTelefoniaBean.comboBox}" var="forTelefonia" 
+                                                   itemLabel="#{forTelefonia.clave}" itemValue="#{forTelefonia.idTelefonia}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Eliminar" style="text-align: center;width: 90px;">
+                        <p:commandButton   icon="fa fa-ban" title="Eliminar" 
+                                           action="#{tipoTelefoniaBean.deleteTipoTelefonia(telefoniaFor.id)}"
+                                           update="tableTelefonia" process="@this" id="btndelete">
+                            <p:confirm header="Confirmacion" message="Estas seguro de querer eliminar este telefono?" icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
+                    </p:column>
+                    <p:column headerText="Editar" style="text-align: center;width: 90px;">
+                        <p:rowEditor  editTitle="Editar" />
+                    </p:column>
+                </p:dataTable>
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-close" />
+                </p:confirmDialog> 
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

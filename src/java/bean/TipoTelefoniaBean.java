@@ -33,8 +33,8 @@ public class TipoTelefoniaBean {
     private static List<CTelefonia> comboBox;
     private long id_telefonia;
     private CTelefonia objTelefonia;
-    
-public TipoTelefoniaBean() {
+
+    public TipoTelefoniaBean() {
         tipoTelefonoObj = new CTipoTelefono();
         objTelefonia = new CTelefonia();
     }
@@ -53,7 +53,7 @@ public TipoTelefoniaBean() {
         CTipoTelefonoJpaController model = new CTipoTelefonoJpaController();
         CTelefoniaJpaController modelTelefonia = new CTelefoniaJpaController();
         CTelefonia objTelefonia = modelTelefonia.findCTelefonia(id_telefonia);
-        
+
         tipoTelefonoObj.setFechaServidor(new Date());
         tipoTelefonoObj.setActivo(true);
         tipoTelefonoObj.setIdTelefonia(objTelefonia);
@@ -82,13 +82,13 @@ public TipoTelefoniaBean() {
         }
 
     }
-    
-    public void updateTelefono(RowEditEvent event){
+
+    public void updateTelefono(RowEditEvent event) {
         FacesMessage message = null;
         CTipoTelefonoJpaController model = new CTipoTelefonoJpaController();
         CTipoTelefono objEditTelefonia = (CTipoTelefono) event.getObject();
-        
-        if(id_telefonia != 0){
+
+        if (id_telefonia != 0) {
             CTelefoniaJpaController modelTelefonia = new CTelefoniaJpaController();
             CTelefonia objTelefonia = modelTelefonia.findCTelefonia(id_telefonia);
             objEditTelefonia.setIdTelefonia(objTelefonia);
@@ -141,9 +141,6 @@ public TipoTelefoniaBean() {
         TipoTelefoniaBean.filtroTable = filtroTable;
     }
 
-    
-    
-    
     public CTelefonia getObjTelefonia() {
         return objTelefonia;
     }

@@ -48,6 +48,7 @@ public class TelefoniaBean {
             model.create(telefonoObj);
             message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Telefono Añadido", "");
             FacesContext.getCurrentInstance().addMessage(null, message);
+            init();
         } catch (Exception e) {
             Logger.getLogger(TelefoniaBean.class.getName()).log(Level.SEVERE, null, e);
         }

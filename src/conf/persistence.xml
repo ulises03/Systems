@@ -4,6 +4,14 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.CTelefonia</class>
     <class>entidades.CTipoTelefono</class>
+    <class>entidades.SUsuarios</class>
+    <class>entidades.SAccesos</class>
+    <class>entidades.SPerfilesAccesos</class>
+    <class>entidades.SPerfiles</class>
+    <class>activacionesEntidades.CDistribuidor</class>
+    <class>activacionesEntidades.CClientes</class>
+    <class>activacionesEntidades.HActivacion</class>
+    <class>activacionesEntidades.CCiudad</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.98.224:1433;databaseName=ACTIVACION"/>

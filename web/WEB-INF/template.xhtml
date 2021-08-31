@@ -45,7 +45,7 @@
                     <p:graphicImage value="#{appBean.baseUrl}/resources/img/ajax-loader.gif"/> 
                 </div>
             </p:dialog>
-            <p:idleMonitor  timeout="#{session.maxInactiveInterval * 60}" onidle="PF('sessionTimeOutDialog').show();" />
+            <p:idleMonitor  timeout="#{session.maxInactiveInterval * 90}" onidle="PF('sessionTimeOutDialog').show();" />
             <p:dialog header="Aviso" widgetVar="sessionTimeOutDialog" modal="true" appendTo="@(body)" 
                       closable="false" resizable="false" visible="false">
                 <h:panelGrid columns="1" id="panel">

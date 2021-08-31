@@ -22,13 +22,16 @@
                 <div class="nano-content menu-scroll-content">
                     <h:form id="menuform">
                         <pm:menu>
-                            <p:menuitem id="om_dashboard" value="Inicio" url="#{appBean.baseLogin}index.xhtml" icon="fa fa-fw fa-home"  />
-                            
-                            <p:submenu id="om_components" label="Catálogos " icon="fa fa-fw fa-bars">
-                                <p:menuitem id="om_sample" value="Ciudad"  url="#{appBean.baseLogin}cat/ciudad/indexciudad.xhtml" icon="fa fa-fw fa-building"  />
-                                <p:menuitem id="om_forms" value="Usuario" url="#{appBean.baseLogin}cat/usuario/indexusuario.xhtml" icon="fa fa-fw fa-user"  />
+                            <p:menuitem  value="Inicio" url="#{appBean.baseLogin}index.xhtml" icon="fa fa-fw fa-home"  />
+                            <p:submenu  label="Catálogos " icon="fa fa-fw fa-bars">
+                                <p:menuitem  value="Ciudad"  url="#{appBean.baseLogin}cat/ciudad/indexciudad.xhtml" icon="fa fa-fw fa-building"  />
+                                <p:menuitem  value="Usuario" url="#{appBean.baseLogin}cat/usuario/indexusuario.xhtml" icon="fa fa-fw fa-user"  />
                                 <p:menuitem value="Telefonos" url="#{appBean.baseLogin}cat/telefono/indextelefono.xhtml" icon="fa fa-fw fa-mobile"  />
                                 <p:menuitem value="Tipo Telefonos" url="#{appBean.baseLogin}cat/tipoTelefonia/indextipotelefonia.xhtml" icon="fa fa-fw fa-mobile"  />
+                            </p:submenu>
+                            <p:submenu label="Perfiles y accesos" icon="fa fa-fw fa-bars">
+                                <p:menuitem value="Perfil"  url="#{appBean.baseLogin}cat/perfil/indexperfil.xhtml" icon="fa fa-fw fa-user"  />
+                                <p:menuitem value="Accesos"  url="#{appBean.baseLogin}cat/acceso/indexacceso.xhtml" icon="fa fa-fw fa-unlock"  />
                             </p:submenu>
                         </pm:menu>
                     </h:form>

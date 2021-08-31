@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title" >Perfiles</ui:define>
+
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/cat/perfil/indexperfil">Perfiles</p:link>
+        </li>
+    </ui:define>
+    <ui:define name="content">
+        <p:panel header="Perfiles" footer="Systems">
+            <h:form id="form">
+                <div class="ui-g">
+                    <div class="ui-g-12" style="text-align: right;"> 
+                        <p:commandButton value="Añadir" icon="fa fa-plus" 
+                                         action="#{perfilBean.accesFromNewPerfil()}" update="pickList"></p:commandButton>
+                    </div>
+                </div>
+                <p:dialog id="dialog" widgetVar="wdialog" modal="true" responsive="true" showEffect="fade" hideEffect="fade" header="Añadir perfil">
+                    <div class="p-grid p-dir-col">
+                        <h:panelGrid columns="1" id="panel">
+                            <p:outputLabel value="Descripcion"></p:outputLabel>
+                            <p:inputText value="#{perfilBean.perfilNew.descripcion}" type="text"  maxlength="20"
+                                         requiredMessage="La Descripcion es requerida" id="inputDesc"/>
+                        </h:panelGrid>
+                        <br/>
+                        <div class="p-grid">
+                            <div class="p-col-12">
+                                <p:pickList id="pickList" value="#{perfilBean.accesosDual}" var="acceso" 
+                                            itemLabel="#{acceso}" itemValue="#{acceso}"  
+                                            showCheckbox="true" showSourceFilter="true" showTargetFilter="true"
+                                            filterMatchMode="contains" responsive="true">
+                                    
+                                    <f:facet name="sourceCaption">Disponibles</f:facet>
+                                    <f:facet name="targetCaption">Asignados</f:facet>
+                                </p:pickList>
+                            </div>
+                        </div>
+                    </div>
+                </p:dialog>
+
+                <p:dataTable value="#{perfilBean.dataTable}" var="perfilFor" 
+                             emptyMessage="No se encotron perfiles"
+                             paginator="true" rows="9"
+                             widgetVar="tablePerfil" 
+                             filteredValue="#{perfilBean.filtroTable}" 
+                             editable="true" 
+                             id="tablePerfil"
+                             reflow="true"
+                             selectionMode="single"
+                             selection="#{perfilBean.perfilTable}" 
+                             rowKey="#{perfilFor.idPerfil}">
+
+                    <p:column headerText="Descripción" filterBy="#{perfilFor.nombrePerfil}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{perfilFor.nombrePerfil}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{perfilFor.nombrePerfil}" placeholder="#{perfilFor.nombrePerfil}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Descripción" filterBy="#{perfilFor.descripcion}" filterMatchMode="contains">
+                        <p:cellEditor>
+                            <f:facet name="output">
+                                <p:outputLabel value="#{perfilFor.descripcion}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{perfilFor.descripcion}" placeholder="#{perfilFor.descripcion}" maxlength="20"/>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+        </p:panel>
+    </ui:define>
+</ui:composition>

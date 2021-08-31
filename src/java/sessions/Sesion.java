@@ -47,6 +47,19 @@ public class Sesion {
         }
         return user;
     }
+    
+    public int getUserSessionID(){
+        Usuario user = null;
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        Map requestParameterMap = externalContext.getSessionMap();
+
+        if (requestParameterMap != null) {
+            user = (Usuario) requestParameterMap.get("user");
+            return user.getId();
+        }
+        return 0;
+    }
 
     public static ExternalContext getSession() {
         FacesContext facesContext = FacesContext.getCurrentInstance();

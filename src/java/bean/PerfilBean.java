@@ -7,21 +7,29 @@ package bean;
 
 import controller.SAccesosJpaController;
 import controller.SPerfilesJpaController;
-import controllerActivacion.HActivacionJpaController;
 import entidades.SAccesos;
 import entidades.SPerfiles;
+import entidades.SPerfilesAccesos;
+import entidades.SPerfilesAccesosPK;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.model.DualListModel;
+import sessions.Sesion;
 
 /**
  *
  * @author admin
  */
 @ManagedBean
+@ViewScoped
 public class PerfilBean {
 
     private static List<SPerfiles> dataTable;
@@ -43,11 +51,59 @@ public class PerfilBean {
         targetAcces = new ArrayList();
         accesosDual = new DualListModel<SAccesos>(sourcesAcces, targetAcces);
     }
-    
-    public void accesFromNewPerfil(){
-        HActivacionJpaController modelactivacion = new HActivacionJpaController();
-        Date fecha2 = new Date(119, 10,3);
-        modelactivacion.activaciones(fecha2, new Date());
+
+    public void accesFromNewPerfil() {
+        SAccesosJpaController modelAccesos = new SAccesosJpaController();
+        sourcesAcces = modelAccesos.findSAccesosEntities();
+        targetAcces = new ArrayList();
+        accesosDual = new DualListModel<SAccesos>(sourcesAcces, targetAcces);
+    }
+
+    public void createPerfilAcces() {
+        FacesMessage message = null;
+        SPerfilesJpaController modelPerfil = new SPerfilesJpaController();
+        Sesion sesion = new Sesion();
+        List<SPerfilesAccesos> listaPerfilAccesos = new ArrayList();
+        try {
+            if (!accesosDual.getTarget().isEmpty()) {
+                perfilNew.setActivo(true);
+                perfilNew.setFechaServidor(new Date());
+                perfilNew.setFechaAlta(new Date());
+                perfilNew.setIdUsuarioModifica(sesion.getUserSessionID());
+                
+                for (SAccesos obj : accesosDual.getTarget()) {
+                    SPerfilesAccesos entidad = new SPerfilesAccesos();
+
+                    entidad.setSAccesos(obj);
+                    
+                    entidad.setFechaServidor(new Date());
+                    entidad.setIdUsuarioModifica(sesion.getUserSessionID());
+                    listaPerfilAccesos.add(entidad);
+                }
+                
+                perfilNew.setSPerfilesAccesosCollection(listaPerfilAccesos);
+                
+                modelPerfil.create(perfilNew);
+                perfilNew = null;
+                init();
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se añadio el perfil", "");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            } else {
+                perfilNew.setActivo(true);
+                perfilNew.setFechaServidor(new Date());
+                perfilNew.setFechaAlta(new Date());
+                perfilNew.setIdUsuarioModifica(sesion.getUserSessionID());
+                modelPerfil.create(perfilNew);
+                perfilNew = null;
+                init();
+                message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Se añadio el perfil", "");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
+        } catch (Exception e) {
+            message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ocurrio un error", "");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            Logger.getLogger(PerfilBean.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     public List<SAccesos> getSourcesAcces() {

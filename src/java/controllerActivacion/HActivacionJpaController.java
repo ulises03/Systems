@@ -27,13 +27,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CollectionJoin;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import org.eclipse.persistence.config.QueryHints;
 import util.LocalEntityManagerFactory;
 
 /**
@@ -301,32 +299,31 @@ public class HActivacionJpaController implements Serializable {
         }
     }
 
-    public void activaciones(Date startDate, Date endDate) {
+    public List<HActivacion> activaciones(Date startDate, Date endDate, SUsuarios usuario) {
         List<HActivacion> lista = new ArrayList<>();
         EntityManager em = getEntityManager();
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        SUsuariosJpaController modelUser = new SUsuariosJpaController();
-        SUsuarios usuario = new SUsuarios();
-        usuario = modelUser.findSUsuarios(2);
-                
         try {
             CriteriaQuery<HActivacion> criteria = cb.createQuery(HActivacion.class);
             Root<HActivacion> activaciones = criteria.from(HActivacion.class);
-            
+
             Join<HActivacion, SUsuarios> activacionesUsuario = activaciones.join(HActivacion_.idUsuario);
             criteria.select(activaciones).where(cb.equal(activacionesUsuario.get(SUsuarios_.idUsuario), usuario));
-            
+
             List<Predicate> restrictions = new ArrayList<>();
-            restrictions.add(cb.between(activaciones.<Date>get(HActivacion_.fechaServidor),startDate , endDate));
-            restrictions.add(cb.equal(activaciones.get(HActivacion_.idUsuario), usuario));
+            restrictions.add(cb.between(activaciones.<Date>get(HActivacion_.fechaPeticion), startDate, endDate));
+            if (usuario.getIdUsuario() != 0) {
+                restrictions.add(cb.equal(activaciones.get(HActivacion_.idUsuario), usuario));
+            }
             criteria.where(restrictions.toArray(new Predicate[restrictions.size()]));
-            
+
             TypedQuery<HActivacion> query = em.createQuery(criteria);
             lista = query.getResultList();
 
         } catch (Exception ex) {
             Logger.getLogger(HActivacionJpaController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return lista;
     }
 
 }

@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f95d1e24-efdd-4fcd-9e4f-7ec4a266d924" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoPrueba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoPrueba.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CCiudad.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CCiudad.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CCiudad_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CCiudad_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CClientes.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CClientes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CClientes_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CClientes_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CDistribuidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CDistribuidor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CDistribuidor_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/CDistribuidor_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/HActivacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/HActivacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/HActivacion_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/HActivacion_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/IllegalOrphanException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/IllegalOrphanException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/NonexistentEntityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/NonexistentEntityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/PreexistingEntityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/activacionesEntidades/exceptions/PreexistingEntityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AccesosBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AccesosBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AppBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/AppBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/CiudadBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/CiudadBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$ComponentTheme.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/GuestPreferences$ComponentTheme.class" afterDir="false" />
@@ -12,8 +26,38 @@
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/IndexBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/IndexBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LayoutBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LayoutBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LoginBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/LoginBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/PerfilBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/PerfilBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/TelefoniaBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/TelefoniaBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/TipoTelefoniaBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/TipoTelefoniaBean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/UsuarioBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/bean/UsuarioBean.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/CTelefoniaJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/CTelefoniaJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/CTipoTelefonoJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/CTipoTelefonoJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SAccesosJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SAccesosJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SPerfilesAccesosJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SPerfilesAccesosJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SPerfilesJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SPerfilesJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SUsuariosJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/SUsuariosJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/IllegalOrphanException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/IllegalOrphanException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/NonexistentEntityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/NonexistentEntityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/PreexistingEntityException.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controller/exceptions/PreexistingEntityException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CCiudadJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CCiudadJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CClientesJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CClientesJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CDistribuidorJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/CDistribuidorJpaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/HActivacionJpaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/controllerActivacion/HActivacionJpaController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/data/PoolDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/data/PoolDB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTelefonia.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTelefonia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTelefonia_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTelefonia_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTipoTelefono.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTipoTelefono.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTipoTelefono_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/CTipoTelefono_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SAccesos.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SAccesos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SAccesos_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SAccesos_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesos.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesosPK.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesosPK.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesosPK_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesosPK_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesos_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfilesAccesos_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfiles_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SPerfiles_.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SUsuarios.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SUsuarios.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SUsuarios_.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/entidades/SUsuarios_.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/CiudadModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/CiudadModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/LoginModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/LoginModel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/UsuarioModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/model/UsuarioModel.class" afterDir="false" />
@@ -25,16 +69,12 @@
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaUsuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/respuesta/RespuestaUsuario.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/seguridad/HexDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/seguridad/HexDigest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/sessions/Sesion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/sessions/Sesion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/LocalEntityManagerFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/LocalEntityManagerFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/MyUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/classes/util/MyUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/template.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/web/cat/usuario/indexusuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/cat/usuario/indexusuario.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Proyecto.war" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Proyecto.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/template.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/template.xhtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/cat/usuario/indexusuario.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/web/cat/usuario/indexusuario.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/web/WEB-INF/sidebar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/build/web/WEB-INF/sidebar.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/controllerActivacion/HActivacionJpaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controllerActivacion/HActivacionJpaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/sidebar.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/sidebar.xhtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +93,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,5 +107,16 @@
       <updated>1629473294566</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

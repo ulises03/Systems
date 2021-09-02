@@ -24,30 +24,29 @@
                 <div class="ui-g">
                     <div class="ui-g-12" style="text-align: right;"> 
                         <p:commandButton value="Añadir" icon="fa fa-plus" 
-                                         action="#{perfilBean.accesFromNewPerfil()}" update="pickList"></p:commandButton>
+                                         action="#{perfilBean.accesFromNewPerfil()}" oncomplete="PF('wdialog').show();"
+                                         process="@this" update="pickList"></p:commandButton>
                     </div>
                 </div>
                 <p:dialog id="dialog" widgetVar="wdialog" modal="true" responsive="true" showEffect="fade" hideEffect="fade" header="Añadir perfil">
-                    <div class="p-grid p-dir-col">
-                        <h:panelGrid columns="1" id="panel">
-                            <p:outputLabel value="Descripcion"></p:outputLabel>
-                            <p:inputText value="#{perfilBean.perfilNew.descripcion}" type="text"  maxlength="20"
-                                         requiredMessage="La Descripcion es requerida" id="inputDesc"/>
-                        </h:panelGrid>
-                        <br/>
-                        <div class="p-grid">
-                            <div class="p-col-12">
-                                <p:pickList id="pickList" value="#{perfilBean.accesosDual}" var="acceso" 
-                                            itemLabel="#{acceso}" itemValue="#{acceso}"  
-                                            showCheckbox="true" showSourceFilter="true" showTargetFilter="true"
-                                            filterMatchMode="contains" responsive="true">
-                                    
-                                    <f:facet name="sourceCaption">Disponibles</f:facet>
-                                    <f:facet name="targetCaption">Asignados</f:facet>
-                                </p:pickList>
-                            </div>
-                        </div>
-                    </div>
+                    <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+                        <p:outputLabel value="Nombre Perfil" />
+                        <p:inputText value="#{perfilBean.perfilNew.nombrePerfil}" type="text"  maxlength="20" required="true" id="inputnombre"
+                                     requiredMessage="El nombre es requerida" />
+                        <p:outputLabel value="Descripcion" />
+                        <p:inputText value="#{perfilBean.perfilNew.descripcion}" type="text"  maxlength="20" required="true" id="inputdesc"
+                                     requiredMessage="La Descripcion es requerida" />
+                        <p:pickList id="pickList" value="#{perfilBean.accesosDual}" var="acceso" 
+                                    itemLabel="#{acceso.nombreAcceso}" itemValue="#{acceso}"  
+                                    showCheckbox="true" showSourceFilter="true" showTargetFilter="true"
+                                    filterMatchMode="contains"
+                                    responsive="true">
+                            <f:converter converterId = "accesoConverter" />
+                            <f:facet name="sourceCaption">Disponibles</f:facet>
+                            <f:facet name="targetCaption">Asignados</f:facet>
+                        </p:pickList>
+                    </p:panelGrid>
+                    <p:commandButton value="Registrar" action="#{perfilBean.createPerfilAcces()}" oncomplete="PF('wdialog').hide();" update="tablePerfil,pickList,inputdesc,inputnombre" />
                 </p:dialog>
 
                 <p:dataTable value="#{perfilBean.dataTable}" var="perfilFor" 
@@ -62,28 +61,16 @@
                              selection="#{perfilBean.perfilTable}" 
                              rowKey="#{perfilFor.idPerfil}">
 
-                    <p:column headerText="Descripción" filterBy="#{perfilFor.nombrePerfil}" filterMatchMode="contains">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <p:outputLabel value="#{perfilFor.nombrePerfil}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <p:inputText value="#{perfilFor.nombrePerfil}" placeholder="#{perfilFor.nombrePerfil}" maxlength="20"/>
-                            </f:facet>
-                        </p:cellEditor>
+                    <p:column headerText="Nombre" filterBy="#{perfilFor.nombrePerfil}" filterMatchMode="contains">
+                        <h:outputText value="#{perfilFor.nombrePerfil}" />
                     </p:column>
 
                     <p:column headerText="Descripción" filterBy="#{perfilFor.descripcion}" filterMatchMode="contains">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <p:outputLabel value="#{perfilFor.descripcion}"/>
-                            </f:facet>
-                            <f:facet name="input">
-                                <p:inputText value="#{perfilFor.descripcion}" placeholder="#{perfilFor.descripcion}" maxlength="20"/>
-                            </f:facet>
-                        </p:cellEditor>
+                        <h:outputText value="#{perfilFor.descripcion}" />
                     </p:column>
-
+                    <p:column headerText="Accesos">
+                        <h:outputText value="#{perfilFor.SPerfilesAccesosCollection.size()}" />
+                    </p:column>
                 </p:dataTable>
 
             </h:form>

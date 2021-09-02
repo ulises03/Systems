@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title" >Reporte de activaciones</ui:define>
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/reporte/activaciones/indexactivaciones">Reporte de activaciones</p:link>
+        </li>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="p-grid">
+                <div class="p-col-6">
+                    <p:panel header="Parametros" footer="Systems">
+                        <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+                            <p:outputLabel value="Usuario"></p:outputLabel>
+                            <p:selectOneMenu id="select" value="#{hactivacionBean.usuario.idUsuario}"
+                                             effect="fade" filter="true" filterMatchMode="startsWith" style="width:100%">
+                                <f:selectItem itemLabel="Seleccione un usuario" itemValue="0" />
+                                <f:selectItems value="#{hactivacionBean.listComboBox}" var="activacionFor" itemLabel="#{activacionFor.usuario}" itemValue="#{activacionFor.idUsuario}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Rango de fechas"></p:outputLabel>
+                            <p:datePicker id="spanish" locale="es" selectionMode="range" value="#{hactivacionBean.range}" readonlyInput="true" 
+                                          yearNavigator="true" monthNavigator="true" yearRange="2000:2025" styleClass="p-col-6"
+                                          showButtonBar="true"
+                                          showTime="true"/>
+                            <p:commandButton value="Buscar" action="#{hactivacionBean.getActivaciones()}" update="tableActivacion"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+                <div class="p-col-6">
+                    <p:panel header="Tabla activaciones" footer="Systems">
+                        <p:panelGrid columns="1" layout="grid" styleClass=" ui-fluid">
+                            <p:commandButton value="Limpiar Tabla" action="#{hactivacionBean.limpiarValores()}" update="tableActivacion, spanish,select"/>
+                            <p:dataTable value="#{hactivacionBean.dataTable}" var="activacionesFor" 
+                                         emptyMessage="No se encotro ninguna activacion"
+                                         paginator="true" rows="5"
+                                         widgetVar="tableActivacion" 
+                                         filteredValue="#{hactivacionBean.filtroDataTable}" 
+                                         editable="true" 
+                                         id="tableActivacion"
+                                         reflow="true">
+
+                                <p:column headerText="ICCID" filterBy="#{activacionesFor.iccid}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.iccid}" />
+                                </p:column>
+                                <p:column headerText="Ciudad descripcion" filterBy="#{activacionesFor.idCiudad.descripcion}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.idCiudad.descripcion}" />
+                                </p:column>
+                                <p:column headerText="Nombre del usuario" filterBy="#{activacionesFor.idUsuario.nombreUsuario}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.idUsuario.nombreUsuario}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

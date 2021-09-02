@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template.xhtml">
+    <ui:define name="title" >Reporte de activaciones</ui:define>
+    <ui:define name="viewname">
+        <li>Pages</li> 
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/index">Inicio</p:link>
+        </li>
+        <li><i class="fa fa-angle-right"></i></li>
+        <li>
+            <p:link outcome="/reporte/activaciones/indexactivacionesprocedure">Reporte de activaciones procedimiento</p:link>
+        </li>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <div class="p-grid">
+                <div class="p-col-6">
+                    <p:panel header="Parametros" footer="Systems">
+                        <p:panelGrid columns="1" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+                            <p:outputLabel value="Usuario" />
+                            <p:selectOneMenu id="select" value="#{activacionSPBean.usuario}"
+                                             effect="fade" filter="true" filterMatchMode="startsWith" style="width:100%">
+                                <f:selectItems value="#{activacionSPBean.listComboBox}" 
+                                               var="usuarioFor" itemLabel="#{usuarioFor.nombreUsuario}" itemValue="#{usuarioFor}"/>
+                                <f:converter converterId = "usuarioConverter" />
+                            </p:selectOneMenu>
+                            <p:commandButton value="Buscar" action="#{activacionSPBean.exProcedure()}" update="tableActivacion"/>
+                        </p:panelGrid>
+                    </p:panel>
+                </div>
+                <div class="p-col-6">
+                    <p:panel header="Tabla activaciones" footer="Systems">
+                        <p:panelGrid columns="1" layout="grid" styleClass=" ui-fluid">
+                            <p:dataTable value="#{activacionSPBean.dataTable}" var="activacionesFor" 
+                                         emptyMessage="No se encotro ninguna activacion"
+                                         paginator="true" rows="5"
+                                         widgetVar="tableActivacion" 
+                                         filteredValue="#{activacionSPBean.filterTable}" 
+                                         editable="true" 
+                                         id="tableActivacion"
+                                         reflow="true">
+                                
+                                <p:column headerText="ICCID" filterBy="#{activacionesFor.iccid}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.iccid}" />
+                                </p:column>
+                                <p:column headerText="IMEI" filterBy="#{activacionesFor.imei}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.imei}" />
+                                </p:column>
+                                <p:column headerText="Telefono" filterBy="#{activacionesFor.telefono}" filterMatchMode="contains">
+                                    <h:outputText value="#{activacionesFor.telefono}" />
+                                </p:column>
+                                <p:column headerText="Nombre del usuario" >
+                                    <h:outputText value="#{activacionesFor.idUsuario.nombreUsuario}" />
+                                </p:column>
+                            </p:dataTable>
+                        </p:panelGrid>  
+                    </p:panel>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

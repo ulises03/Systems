@@ -26,6 +26,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.StoredProcedureQuery;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -297,6 +298,25 @@ public class HActivacionJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public List<HActivacion> activacionesProcedure(SUsuarios user){
+        EntityManager em = getEntityManager();
+        StoredProcedureQuery query = em.createNamedStoredProcedureQuery("activacionesUsuarios");
+        query.setParameter("UsuarioId", user.getIdUsuario());
+        query.execute();
+        List<Object[]> postComments = query.getResultList();
+        List<HActivacion> listaActivaciones = new ArrayList();
+        for(Object[] a : postComments){
+            HActivacion activaciontmp = new HActivacion();
+            activaciontmp.setId(Long.parseLong(a[0].toString()));
+            activaciontmp.setIccid(a[1].toString());
+            activaciontmp.setImei(a[2].toString());
+            activaciontmp.setTelefono(a[4].toString());
+            activaciontmp.setIdUsuario(user);
+            listaActivaciones.add(activaciontmp);
+        }
+        return listaActivaciones;
     }
 
     public List<HActivacion> activaciones(Date startDate, Date endDate, SUsuarios usuario) {

@@ -17,6 +17,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,6 +32,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "H_ACTIVACION")
 @XmlRootElement
+@NamedStoredProcedureQuery(
+        name = "activacionesUsuarios",
+        procedureName = "Ulises_Activaciones",
+        parameters = {
+            @StoredProcedureParameter(mode = ParameterMode.IN, type = Integer.class, name = "UsuarioId")
+        }
+)
 @NamedQueries({
     @NamedQuery(name = "HActivacion.findAll", query = "SELECT h FROM HActivacion h"),
     @NamedQuery(name = "HActivacion.findById", query = "SELECT h FROM HActivacion h WHERE h.id = :id"),
@@ -286,5 +296,5 @@ public class HActivacion implements Serializable {
     public String toString() {
         return "activacionesEntidades.HActivacion[ id=" + id + " ]";
     }
-    
+
 }
